@@ -39,6 +39,14 @@ In our sample of 3 categories (dehumidifier, heater, charger), Oct 2026, only 3 
 
 So matching a product to a CPSC recall usually means extracting and matching model numbers from text, while ENERGY STAR can be matched exactly by model number or UPC.
 
+## What builders say
+
+The team behind [Sift](https://devpost.com/software/sift-2rdezv), a project submitted to the USAII Global AI Hackathon 2026 (a hackathon self-description, not industry research), wrote:
+
+> "Recall databases are noisy. The official FDA and CPSC databases match on keywords, so searching a common brand word surfaces recalls for completely unrelated products in totally different industries."
+
+They added a verification step and drop matches they cannot confirm.
+
 ## Not yet verified
 
 - **openFDA** (food enforcement reports, device recalls, api.fda.gov)
