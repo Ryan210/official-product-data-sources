@@ -21,12 +21,12 @@ curl "https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTit
 
 # ENERGY STAR certified dehumidifiers
 curl "https://data.energystar.gov/resource/mgiu-hu4z.json?\$limit=2"
-# exact match by model number
+# exact match by model number (certification record, not a recall)
 curl "https://data.energystar.gov/resource/mgiu-hu4z.json?model_number=AERD501P"
 
 # ENERGY STAR certified products UPC codes
 curl "https://data.energystar.gov/resource/8edu-y555.json?\$limit=2"
-# exact match by UPC
+# exact match by UPC (certification record, not a recall)
 curl "https://data.energystar.gov/resource/8edu-y555.json?upc=196388555765"
 
 # All ENERGY STAR dataset IDs
@@ -37,7 +37,7 @@ curl "https://api.us.socrata.com/api/catalog/v1?domains=data.energystar.gov"
 
 In our sample of 3 categories (dehumidifier, heater, charger), Oct 2026, only 3 of 249 CPSC recall records had the `ProductUPCs` field filled (about 1%, all in the heater results). The sample is the `RecallTitle` queries for those three words, which returned 18, 175 and 56 records. Model numbers usually appear only in the free-text `Description`.
 
-So matching a product to a CPSC recall usually means extracting and matching model numbers from text, while ENERGY STAR can be matched exactly by model number or UPC.
+So matching a product to a CPSC recall usually means extracting and matching model numbers from text, while ENERGY STAR can be queried by exact model number or UPC, for certified products only.
 
 ## What builders say
 
@@ -50,8 +50,10 @@ They added a verification step and drop matches they cannot confirm.
 ## Not yet verified
 
 - **openFDA** (food enforcement reports, device recalls, api.fda.gov)
-- **EU EPREL** (energy label database)
+- **EU EPREL** (energy label database): returned HTTP 403 on 2026-10-18
 - **Rate limits** for the CPSC and ENERGY STAR APIs: no rate-limit headers were returned. Unknown.
+
+Not affiliated with CPSC, ENERGY STAR or any agency.
 
 ## Goal
 
@@ -59,7 +61,7 @@ Let agents check facts against official registries instead of product pages. Eac
 
 ## Status
 
-Prototype in progress. No code yet; this repo is a catalog only.
+Prototype planned. No code yet; this repo is a catalog only.
 
 ## License
 
